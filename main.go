@@ -5,7 +5,11 @@ import (
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/satori/go.uuid"
 )
+
+var hash = uuid.NewV4()
 
 func main() {
 	http.HandleFunc("/", hello)
@@ -20,5 +24,5 @@ func main() {
 }
 
 func hello(w http.ResponseWriter, req *http.Request) {
-	fmt.Fprintln(w, "hello, world!")
+	fmt.Fprintln(w, "hello, world! "+fmt.Sprintf("%s", hash))
 }
